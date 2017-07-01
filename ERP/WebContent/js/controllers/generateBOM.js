@@ -136,15 +136,17 @@ erpApp.controller('generateBomCtrl',function($scope, $mdDialog, $location,$rootS
 				console.log(data);
 				if (data.data.code === 1) {
 					utils.showToast(data.data.message);
+					showConfirm();
 				} else {
 					utils.showToast(data.data.message);
+					showConfirm();
 				}
 			},
 			function errorCallback(response) {
 				console.log("Error",response);
 				utils.showToast("Something went wrong. Please try again later.");
 			});
-		showConfirm();
+		
 	};
 	
 	function showConfirm(ev){

@@ -8,6 +8,7 @@
           </div>
      <table>
         <tr >
+          <th>NO</th>
           <th>PRODUCT ID</th>
           <th>TARGET QUANTITY</th>
           <th>QC PASS QUANTITY</th>
@@ -16,6 +17,7 @@
           <th>REMARK</th>
         </tr>
         <tr ng-repeat="productionplan in productionPlans">
+           <td>{{$index+1}}</td>
            <td>{{productionplan.product.partNumber}}</td>
            <td>{{productionplan.targetQuantity}}</td>
            <td>{{productionplan.qualityCheckedQuantity}}</td>

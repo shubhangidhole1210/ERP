@@ -57,12 +57,12 @@ erpApp.controller('productOrderDialogCtrl', function($scope,$http, $mdDialog,SER
 							"saveVendorError", {});
 					console.log(data);
 					$scope.hide();
-					utils.showToast('Something went worng. Please try again later.');
+					utils.showToast(data.data.message);
 				}
 				else{
 					$scope.displayProgressBar = false;
-					utils.showToast(data.data.message);
 					$rootScope.$emit("callPopulateProductOrderList",{});
+					utils.showToast(data.data.message);
 				}
 			},
 			function errorCallback(data) {
