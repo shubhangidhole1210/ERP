@@ -2,7 +2,7 @@ erpApp.controller('rawMaterialCtrl', function($scope, $http, $mdDialog, $mdToast
 	$scope.isRmPresent=false;
 	$scope.isUnitReadOnly = false;
 	$scope.rawMaterial = {};
-	
+	$scope.isTextbox = true;
 	$rootScope.$on("CallPopulateRawMaterial", function() {
 		$scope.populateRawMaterial();
 	});

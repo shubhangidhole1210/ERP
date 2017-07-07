@@ -2,6 +2,9 @@ erpApp.controller('securityCheckOutCtrl', function($scope, $http, $mdDialog, $md
 		$rootScope, SERVER_URL,$filter,utils,Auth,$location) {
 	$scope.createDate = $filter('date')(Date.now(), 'MM-dd-yyyy');
 	 $scope.productOrderMsg= true;
+	 $scope.OrderCreationMsg = false;
+	 $scope.isproduct =true;
+	 $scope.isSavebutton = false;
 	 $scope.createDate = new Date($scope.createDate);
 	 
 	 $scope.getClient=function(){
@@ -21,6 +24,7 @@ erpApp.controller('securityCheckOutCtrl', function($scope, $http, $mdDialog, $md
 	   
 	    $scope.clientProductOrder=function(index)
 		{
+	    	$scope.isproduct = false;
 	    	$scope.productOrderMsg= false;
 			var httpparams = {};
 			httpparams.method = 'GET';
@@ -31,6 +35,7 @@ erpApp.controller('securityCheckOutCtrl', function($scope, $http, $mdDialog, $md
 			$http(httpparams).then(function successCallback(response) {
 				$scope.clientProductList = response.data;
 				console.log(response);
+				$scope.createProductOrder();
 			}, function errorCallback(response) {
 				console.log("Error");
 			})
@@ -73,7 +78,7 @@ erpApp.controller('securityCheckOutCtrl', function($scope, $http, $mdDialog, $md
 				securityCheckOut.productId= $scope.productOtderList[index].product.id;
 				securityCheckOutParts.push(securityCheckOut);
 			}
-			console.log('intime : ' + $scope.intime.getTime());
+			/*console.log('intime : ' + $scope.intime.getTime());
 			console.log('out : ' + $scope.outtime.getTime());
 			console.log('intime : ' + $scope.intime.toLocaleTimeString());
 			console.log('out : ' + $scope.outtime.toLocaleTimeString());
@@ -81,17 +86,19 @@ erpApp.controller('securityCheckOutCtrl', function($scope, $http, $mdDialog, $md
 				console.log('intime is lesser than outtime')
 			}else{
 				console.log('intime is greater than outtime')
-			}
+			}*/
 			var data = {
 				invoice_No : $scope.invoice_No,
 				clientname : $scope.selectedClient,
 				vehicleNo : $scope.vehicleNo,
-				driver_Name : $scope.driver_Name,
+				firstName : $scope.firstName,
+				lastName : $scope.lastName,
 				description : $scope.description,
 				createDate : $scope.createDate,
 				intime : $scope.intime.toLocaleTimeString().split(" ")[0],
-				outtime : $scope.outtime.toLocaleTimeString().split(" ")[0],
+				/*outtime : $scope.outtime.toLocaleTimeString().split(" ")[0],*/
 				poNo :  $scope.productOrders.id,
+				licence_no : $scope.licence_no,
 				securityCheckOutParts : securityCheckOutParts
 			};
 			var httpparams = {
@@ -124,6 +131,16 @@ erpApp.controller('securityCheckOutCtrl', function($scope, $http, $mdDialog, $md
 		$scope.restInformation=function(){
 			$location.path('/');
 		};
+		
+		$scope.createProductOrder = function(){
+			
+			if( $scope.clientProductList.length === 0){
+				$scope.OrderCreationMsg = true;
+				$scope.isproduct = true;
+				 $scope.isSavebutton = true;
+			}
+			
+		}
 		
 		$scope.dateValidation = function(createDate){
 			console.log("create date" + createDate);

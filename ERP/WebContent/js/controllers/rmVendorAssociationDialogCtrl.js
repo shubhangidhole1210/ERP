@@ -28,7 +28,7 @@ erpApp		.controller(
 						var data = {
 								rawmaterial:$scope.rmOrderAssociation.rawmaterial.id,
 								vendor:$scope.rmOrderAssociation.vendor.id,
-								pricePerUnit:$scope.rmOrderAssociation.pricePerUnit
+								pricePerUnit:$scope.rawmaterial.pricePerUnit
 						};
 						var httpparams = {};
 						if ($scope.flag == 0) {
@@ -108,6 +108,23 @@ erpApp		.controller(
 								console.log("Error");
 							});
 					    };
+					    
+					    
+					    $scope.getPrice=function(){
+					    	var httpparams = {};
+							httpparams.method = 'GET';
+							httpparams.url = SERVER_URL + "rawmaterial/" +$scope.rmOrderAssociation.rawmaterial.id;
+							httpparams.headers = {
+									auth_token : Auth.getAuthToken()
+								};
+							$http(httpparams).then(function successCallback(response) {
+								$scope.rawmaterial = response.data;
+								console.log("In get raw materials function $scope.rawmaterials is :",$scope.rawmaterial);
+							}, function errorCallback(response) {
+								console.log("Error");
+							});
+					    };
+					    
 				
 					   $scope.getVendors=function(){
 						   var httpparams = {};

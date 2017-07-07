@@ -5,7 +5,7 @@
 			NEW RMVendor Association</md-button>
 		
 		 <md-input-container class="md-block" flex-gt-sm type="password" style="margin-left:2%">
-			<input type="text"  ng-model="searchText"  name="password" placeholder="Search by Raw Material" class="search-text">
+			<input type="text"  ng-model="searchText"  name="password" placeholder="Search by Vendor" class="search-text">
 			</md-input-container>
 			
 		<h1 class="table-header">RAW MATERIAL VENDOR ASSOCIATION LIST</h1>
@@ -13,12 +13,12 @@
 		<table>
 			<tr>
 				<th>NO</th>
-				<th>Raw Material</th>
+				<th>RAW MATERIAL</th>
 				<th>VENDOR </th>
 				<th>PRICE PER UNIT</th>
 				<th>ACTION</th>
 			</tr>
-			<tr ng-repeat="rmOrderAssociations in data  | startFrom:currentPage*pageSize | limitTo:pageSize " >
+			<tr ng-repeat="rmOrderAssociations in data | filter: searchText | startFrom:currentPage*pageSize | limitTo:pageSize " >
 				<td>{{(currentPage*pageSize) + ($index+1) }}</td>
 				<td>{{rmOrderAssociations.rawmaterial.partNumber}}</td>
 				<td>{{rmOrderAssociations.vendor.companyName}}</td>
@@ -26,7 +26,7 @@
 				
 				<td style="margin-left: 2%">
 				     <md-button class="actionButton"  ng-click="showRMVendorAssociation($event,$index)" style="" ng-init="flag=1">EDIT</md-button>
-				<md-button class="actionButton"  ng-click="showConfirm($event,$index)" style="">Remove</md-button>
+				<md-button class="actionButton"  ng-click="showConfirm($event,$index)" style="">REMOVE</md-button>
 				
 				<md-button class="actionButton" ng-click="viewRMVendorAssociation($event,$index)" style="">VIEW</md-button>
 				</td>

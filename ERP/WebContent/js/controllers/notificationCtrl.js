@@ -45,7 +45,7 @@ erpApp.controller('notificationCtrl', function($scope,$http, $mdDialog,SERVER_UR
 			templateUrl : 'views/notificationDialog.html',
 			parent : angular.element(document.body),
 			targetEvent : ev,
-			clickOutsideToClose : false,
+			clickOutsideToClose : true,
 			onRemoving : function(){console.log('Removing user dialog');},
 			fullscreen : $scope.customFullscreen,
 			locals : {
@@ -73,7 +73,7 @@ erpApp.controller('notificationCtrl', function($scope,$http, $mdDialog,SERVER_UR
 					templateUrl : 'views/notificationDialog.html',
 					parent : angular.element(document.body),
 					targetEvent : ev,
-					clickOutsideToClose : false,
+					clickOutsideToClose : true,
 					fullscreen : $scope.customFullscreen,
 					locals : {
 						notification : $scope.notification,
@@ -99,7 +99,7 @@ erpApp.controller('notificationCtrl', function($scope,$http, $mdDialog,SERVER_UR
 					templateUrl : 'views/notificationDialog.html',
 					parent : angular.element(document.body),
 					targetEvent : ev,
-					clickOutsideToClose : false,
+					clickOutsideToClose : true,
 					fullscreen : $scope.customFullscreen,
 					locals : {
 						notification : $scope.notification,

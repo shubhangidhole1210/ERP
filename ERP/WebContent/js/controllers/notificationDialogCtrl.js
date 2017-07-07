@@ -11,10 +11,33 @@ erpApp.controller('notificationDialogCtrl', function($scope,$http, $mdDialog,SER
 
 	$scope.cancel = function() {
 		$mdDialog.cancel();
+		console.log("cancel function");
 	};
 
 	$scope.answer = function(answer) {
 		$mdDialog.hide(answer);
+		console.log("cancel function");
+	};
+	
+	
+	$scope.getStatusInformation=function(){
+		utils.showProgressBar();
+		var httpparams = {};
+		httpparams.method = 'GET';
+		httpparams.url = SERVER_URL + "status/list";
+		httpparams.headers = {
+				auth_token : Auth.getAuthToken()
+			};
+		$http(httpparams).then(function successCallback(response) {
+			$scope.data = response.data;
+			$scope.status=response.data;
+			console.log("$scope.status" , $scope.status);
+			utils.hideProgressBar();
+		}, function errorCallback(response) {
+			utils.showToast("We are Sorry. Something went wrong. Please try again later.");
+			console.log("Error");
+			utils.hideProgressBar();
+		});
 	};
 
 	$scope.saveNotificationInformation = function(ev) {
@@ -25,6 +48,7 @@ erpApp.controller('notificationDialogCtrl', function($scope,$http, $mdDialog,SER
 				subject: $scope.notification.subject ,
 				template: $scope.notification.template,
 				type: $scope.notification.type,
+				status1: $scope.notification.status.id
 		};
 		var httpparams = {};
 		if ($scope.flag == 0) {

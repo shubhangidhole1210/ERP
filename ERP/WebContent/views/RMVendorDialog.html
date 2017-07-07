@@ -13,20 +13,7 @@
 	<md-dialog-content>
 	<div class="md-dialog-content">
 
-		<div layout-gt-sm="row">
-
-			<md-input-container class="md-block" flex-gt-sm>
-			<label class="input-filed-label">PRICE PER UNIT</label> <input
-				type="number" ng-model="rmOrderAssociation.pricePerUnit"
-				value="rmOrderAssociation.pricePerUnit" required name="pricePerUnit"
-				ng-disabled="isReadOnly" ng-maxlength="6" min="1">
-			<div ng-messages="rmVendorAssociation.pricePerUnit.$error">
-				<div ng-message="required">Please Enter Price Per Unit</div>
-				<div ng-message="maxlength">You can enter only 6 digit</div>
-				<div ng-message="min">Price should be greater then 0</div>
-			</div>
-			</md-input-container>
-		</div>
+		
 		<!--  <md-autocomplete
           ng-disabled="isDisabled"
           md-no-cache="noCache"
@@ -50,7 +37,7 @@
 			<md-input-container style="width:100%"> <label>Raw
 				material*</label> <md-select ng-model="rmOrderAssociation.rawmaterial.id"
 				name="rawMaterial" value="rawMaterial.id" ng-disabled="isReadOnly"
-				ng-init="getRawMaterials()" required> <md-option
+				ng-init="getRawMaterials()" required ng-change="getPrice($index)"> <md-option
 				ng-repeat="rawMaterial in rawmaterials" ng-value="rawMaterial.id">
 			{{rawMaterial.partNumber}} </md-option> </md-select>
 			<div ng-messages="rmVendorAssociation.rawMaterial.$error">
@@ -61,6 +48,20 @@
 		
 		<div class="ui-msg" ng-show="isRawMaterial">Please create Raw Material</div>
 
+		<div layout-gt-sm="row">
+
+			<md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">PRICE PER UNIT</label> <input
+				type="number" ng-model="rawmaterial.pricePerUnit"
+				value="rmOrderAssociation.pricePerUnit"  name="pricePerUnit"
+				 ng-maxlength="6" min="1" disabled>
+			<!-- <div ng-messages="rmVendorAssociation.pricePerUnit.$error">
+				<div ng-message="required">Please Enter Price Per Unit</div>
+				<div ng-message="maxlength">You can enter only 6 digit</div>
+				<div ng-message="min">Price should be greater then 0</div>
+			</div> -->
+			</md-input-container>
+		</div>
 		<md-input-container class="drop-down"> <label
 			style="color: black;">Vendor *</label> <md-select
 			ng-model="rmOrderAssociation.vendor.id" name="vendor"

@@ -31,34 +31,55 @@
 
 						</div>
 						<div layout-gt-sm="row">
+							
 							<md-input-container class="md-block" flex-gt-sm>
-							<label class="input-filed-label">VEHICLE NUMBER</label> <input
-								type="text" required name="vehicleName" ng-model="vehicleNo">
+							<label class="input-filed-label">DRIVER FIRST NAME</label> <input
+								type="text" required name="firstName" ng-model="firstName" ng-minlength="2" limit-to="255" ng-maxlength="254"  onkeypress='return event.charCode >= 65 && event.charCode <= 122'>
+							<div ng-messages="securityInformation.firstName.$error">
+								<div ng-message="required">Please enter Driver First Name</div>
+								<div ng-message="minlength">Driver First Name should be minimum 2 character</div>
+								<div ng-message="maxlength">Driver First Name should be maximum 255 character</div>
+							</div>
+							</md-input-container>
+							<md-input-container class="md-block" flex-gt-sm>
+							<label class="input-filed-label">DRIVER LAST NAME</label> <input
+								type="text" required name="lastName" ng-model="lastName" ng-minlength="2" limit-to="255" ng-maxlength="254" onkeypress='return event.charCode >= 65 && event.charCode <= 122'>
+							<div ng-messages="securityInformation.driverName.$error">
+								<div ng-message="required">Please enter Driver Last Name</div>
+								<div ng-message="minlength">Driver Last Name should be minimum 2 character</div>
+								<div ng-message="maxlength">Driver Last Name should be maximum 255 character</div>
+							</div>
+							</md-input-container>
+							
+						</div>
+						<div layout-gt-sm="row">
+							<md-input-container class="md-block" flex-gt-sm>
+							<label class="input-filed-label">VEHICLE NUMBER  (MH-12 FB-5503)</label> <input
+								type="text" required name="vehicleName" ng-model="vehicleNo" placeholder="MH-12 FB-5503">
 							<div ng-messages="securityInformation.vehicleName.$error">
 								<div ng-message="required">Please enter Vehicle Number</div>
 							</div>
 							</md-input-container>
-
 							<md-input-container class="md-block" flex-gt-sm>
-							<label class="input-filed-label">DRIVER NAME</label> <input
-								type="text" required name="driverName" ng-model="driver_Name" ng-minlngth="2" limit-to="255" onkeypress='return event.charCode >= 65 && event.charCode <= 122'>
-							<div ng-messages="securityInformation.driverName.$error">
-								<div ng-message="required">Please enter Driver Name</div>
-								<div ng-message="minlength">Driver Name should be minimum 2 character</div>
-								<div ng-message="maxlength">Driver Name should be maximum 255 character</div>
-							</div>
-							</md-input-container>
+						<label class="input-filed-label">LICENSE NO</label> <input
+							type="text" required name="licence_no" ng-model="licence_no">
+						<div ng-messages="securityInformation.licence_no.$error">
+							<div ng-message="required">Please enter License No</div>
 						</div>
+						</md-input-container>
+							
+						</div>
+						
 						<div layout-gt-sm="row">
 							<md-input-container class="md-block" flex-gt-sm>
 							<label class="input-filed-label">IN TIME</label> <input
-								type="time" name="inTime" ng-model="intime" id="intime" step='1'
+								type="time" name="inTime" ng-model="intime" id="intime" 
 								required>
 							<div ng-messages="securityInformation.inTime.$error">
 								<div ng-message="required">Please enter exact IN Time</div>
 							</div>
 							</md-input-container>
-							<md-input-container class="md-block" flex-gt-sm>
+							<!-- <md-input-container class="md-block" flex-gt-sm>
 							<label class="input-filed-label">OUT TIME</label> <input
 								type="time" name="outtime" ng-model="outtime" id="outtime"
 								step='1' min="{{intime}}" required>
@@ -67,11 +88,11 @@
 							</div>
 							<div ng-show=" securityInformation.outTime.$error.min"
 								class="error-msg">Out Time should be greater than In Time</div>
-							</md-input-container>
+							</md-input-container> -->
 						</div>
 						<md-input-container class="md-block" flex-gt-sm>
 						<label class="input-filed-label">DESCRIPTION</label> <input
-							type="text" required name="description" ng-model="description" ng-minlength="4" limit-to="255">
+							type="text" required name="description" ng-model="description" ng-minlength="4" limit-to="255" ng-maxlength="254">
 						<div ng-messages="securityInformation.description.$error">
 							<div ng-message="required">Please enter Description</div>
 							<div ng-message="minlength">Description should be minimum 4 character</div>
@@ -91,13 +112,14 @@
 						<div layout-gt-sm="row">
 							<md-input-container style="width:100%"> <label
 								style="color: black;">Product Order</label> 
-								<md-select ng-model="productOrders.id" name="rawMaterial" ng-init="getRMInformation()" ng-change="displayProductList($index)" ng-disabled="!selectedClient"> 
+								<md-select ng-model="productOrders.id" name="rawMaterial" ng-init="getRMInformation()" ng-change="displayProductList($index)" ng-disabled="isproduct"> 
 								<md-option ng-repeat="productOrder in clientProductList" ng-value="productOrder.id">{{productOrder.invoiceNo}} </md-option>
 								 </md-select>
 								 <div ng-messages="securityInformation.rawMaterial.$error">
 								    <div ng-message="required">Please Select Product</div>
 								 </div>
-								 <p ng-show="productOrderMsg" style="color: rgb(40,53,147) "">Please select Client first</p>
+								 <p ng-show="productOrderMsg" style="color: rgb(40,53,147) ">Please select Client first</p>
+								  <p ng-show="OrderCreationMsg" style="color: rgb(40,53,147) ">Please create product order for this client</p>
 							</md-input-container>
 						</div>
 						<div layout-gt-sm="row"></div>
@@ -141,7 +163,7 @@
 							<md-dialog-actions layout="row"> <md-button
 								class="actionButton"
 								ng-click="submitInformation(securityInformation.$valid,$event);resteData()"
-								type="submit" ng-disabled="isReadOnly" style="">SAVE</md-button> <md-button
+								type="submit"  style="" ng-disabled="isSavebutton">SAVE</md-button> <md-button
 								class="actionButton" ng-click="restInformation()" type="reset" style="">CANCEL</md-button>
 							</md-dialog-actions>
 						</div>

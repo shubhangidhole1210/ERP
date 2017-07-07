@@ -30,7 +30,29 @@
 							</md-input-container>
 						</div>
 						<div layout-gt-sm="row">
+							
 							<md-input-container class="md-block" flex-gt-sm>
+							<label class="input-filed-label">DRIVER FIRST NAME</label> <input
+								type="text" required name="firstName" ng-model="firstName" ng-minlength="2" limit-to="255" ng-maxlength="254"  onkeypress='return event.charCode >= 65 && event.charCode <= 122'>
+							<div ng-messages="securityInformation.firstName.$error">
+								<div ng-message="required">Please enter Driver First Name</div>
+								<div ng-message="minlength">Driver First Name should be minimum 2 character</div>
+								<div ng-message="maxlength">Driver First Name should be maximum 255 character</div>
+							</div>
+							</md-input-container>
+							<md-input-container class="md-block" flex-gt-sm>
+							<label class="input-filed-label">DRIVER LAST NAME</label> <input
+								type="text" required name="lastName" ng-model="lastName" ng-minlength="2" limit-to="255" ng-maxlength="254" onkeypress='return event.charCode >= 65 && event.charCode <= 122'>
+							<div ng-messages="securityInformation.driverName.$error">
+								<div ng-message="required">Please enter Driver Last Name</div>
+								<div ng-message="minlength">Driver Last Name should be minimum 2 character</div>
+								<div ng-message="maxlength">Driver Last Name should be maximum 255 character</div>
+							</div>
+							</md-input-container>
+							
+						</div>
+						  <div layout-gt-sm="row">
+						    <md-input-container class="md-block" flex-gt-sm>
 							<label class="input-filed-label">VEHICLE NUMBER</label> <input
 								type="text" required name="vehicleName" ng-model="vehicleNo">
 							<div ng-messages="securityInformation.vehicleName.$error">
@@ -38,17 +60,15 @@
 								<div ng-message="pattern">invalid Vehicle No!! Please enter valid number </div>
 							</div>
 							</md-input-container>
-
-							<md-input-container class="md-block" flex-gt-sm>
-							<label class="input-filed-label">DRIVER NAME</label> <input
-								type="text" required name="driverName" ng-model="driver_Name" ng-minlength="2" limit-to="255" onkeypress='return event.charCode >= 65 && event.charCode <= 122'>
-							<div ng-messages="securityInformation.driverName.$error">
-								<div ng-message="required">Please enter Driver Name</div>
-								<div ng-message="minlength">Driver Name should be minimum 2 character</div>
-								<div ng-message="maxlength">Driver Name should be maximum 255 character</div>
-							</div>
-							</md-input-container>
+						    <md-input-container class="md-block" flex-gt-sm>
+						<label class="input-filed-label">LICENSE NO </label> <input
+							type="text" required name="licence_no" ng-model="licence_no">
+						<div ng-messages="securityInformation.licence_no.$error">
+							<div ng-message="required">Please enter License No </div>
 						</div>
+						</md-input-container>
+						  
+						  </div>
 						<div layout-gt-sm="row">
 							<md-input-container class="md-block" flex-gt-sm>
 							<label class="input-filed-label">IN TIME</label> <input
@@ -58,7 +78,7 @@
 								<div ng-message="required">Please enter exact IN Time</div>
 							</div>
 							</md-input-container>
-							<md-input-container class="md-block" flex-gt-sm>
+							<!-- <md-input-container class="md-block" flex-gt-sm>
 							<label class="input-filed-label">OUT TIME</label> <input
 								type="time" name="outTime" ng-model="outtime" id="outtime"
 								step='1' min="{{intime}}" required>
@@ -68,7 +88,7 @@
 							<div ng-show=" securityInformation.outTime.$error.min"
 								style="color: red;">Out time should be greater than in
 								time</div>
-							</md-input-container>
+							</md-input-container> -->
 						</div>
 						<md-input-container class="md-block" flex-gt-sm>
 						<label class="input-filed-label">DESCRIPTION</label> <input
@@ -93,7 +113,7 @@
 							<md-input-container class="drop-down"> <label
 								style="color: black;">RM Order</label> <md-select
 								ng-model="selectedRMOrderId" name="rawMaterial"
-								ng-init="getRMInformation()" ng-change="getRMListForRMOrder($index)" ng-disabled="!selectedVendor" required>
+								ng-init="getRMInformation()" ng-change="getRMListForRMOrder($index)" ng-disabled="isClientselct" required>
 							<md-option ng-repeat="rawMaterialOrder in vendorRmList"
 								ng-value="rawMaterialOrder.id">
 							{{rawMaterialOrder.name}} </md-option> </md-select>
@@ -101,6 +121,7 @@
 								<div ng-message="required">Please select Raw Material</div>
 							</div>
 							<p ng-show="rmMsg" style="color: rgb(40,53,147)">Please select Vendor first</p>
+							<p ng-show="rmOrderCreationMsg" style="color: rgb(40,53,147)">Please Create Raw material order for selcted vendor</p>
 							</md-input-container>
 						</div>
 						<div layout-gt-sm="row"></div>

@@ -19,7 +19,7 @@
 				<th>MOBILE</th>
 				<th>ACTION</th>
 			</tr>
-			<tr ng-repeat="data in data  | startFrom:currentPage*pageSize | limitTo:pageSize |  filter:{ companyName: searchText }" style="overflow: scroll">
+			<tr ng-repeat="data in data  |  filter:{ companyName: searchText }| startFrom:currentPage*pageSize | limitTo:pageSize " style="overflow: scroll">
 				<td>{{(currentPage*pageSize) + ($index+1) }}</td>
 				<td>{{data.companyName}}</td>
 				<td>{{data.firstName}}</td>

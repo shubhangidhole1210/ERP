@@ -8,7 +8,7 @@
 		</div>
 		<md-input-container class="md-block" flex-gt-sm type="password" style="margin-left:2%">
 		<input type="text" ng-model="searchText" name="password"
-			placeholder="Search by Raw Material Name" class="search-text">
+			placeholder="Search by Raw Material Name" class="search-text" >
 		</md-input-container>
 		<h1 class="table-header">RAW MATERIAL LIST</h1>
 		<table>
@@ -19,7 +19,7 @@
 				<th>PART NUMBER</th>
 				<th>ACTION</th>
 			</tr>
-			<tr ng-repeat="rawMaterials in data  | startFrom:currentPage*pageSize | limitTo:pageSize |  filter:{ partNumber:searchText }">
+			<tr ng-repeat="rawMaterials in data |  filter:{ partNumber:searchText } | startFrom:currentPage*pageSize | limitTo:pageSize |  filter:{ partNumber:searchText }">
 				 <td>{{(currentPage*pageSize) + ($index+1) }}</td>
 				<td>{{rawMaterials.partNumber}}</td>
 				<td>{{rawMaterials.description}}</td>
