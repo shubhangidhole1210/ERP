@@ -8,12 +8,12 @@
  <div layout-gt-sm="row">
  <md-input-container class="drop-down"> 
 <label style="color: black;">Invoice No*</label> 
-<md-select id="invoiceNumber" ng-model="invoiceList.id" name="invoice" ng-init="getRMOrderInvoiceInformation()" ng-change="invoiceRawMaterialList($index)" required>
+<md-select id="invoiceNumber" ng-model="invoiceList.id" name="invoice" ng-init="getRMOrderInvoiceInformation()" ng-change="invoiceRawMaterialList($index)" ng-disabled="isInvoicereadOnlye">
 	<md-option ng-repeat="invoice in invoiceList" ng-value="invoice.id"> {{invoice.invoice_No}} </md-option> 
 </md-select>
-<div ng-messages="storeForm.invoice.$error">
+<!-- <div ng-messages="storeForm.invoice.$error">
 	<div ng-message="required">Please Select Invoice number</div>
-</div>
+</div> -->
 </md-input-container>
  </div>
  <div class="ui-msg" ng-show="isRawMaterial">Please create Raw Material Order first</div>

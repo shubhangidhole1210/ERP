@@ -16,12 +16,12 @@
 				<th>ORDER STATUS</th>
 				<th>ACTION</th>
 			</tr>
-			<tr ng-repeat="productOrder in data | startFrom:currentPage*pageSize | limitTo:pageSize |  filter:{ companyname: searchText }" >
+			<tr ng-repeat="productOrder in data |  filter : searchText | startFrom:currentPage*pageSize | limitTo:pageSize " >
 				<td>{{(currentPage*pageSize) + ($index+1) }}</td>
 				<td>{{productOrder.client.companyname}}</td>
 				<td>{{productOrder.description}}</td>
 				<td>{{productOrder.status.name}}</td>
-				<td style="text-align: center;">
+				<td>
 				     <md-button class="actionButton"  ng-click="showEditProductOrder($event,$index)"  style="" ng-init="flag=1">EDIT</md-button>
 				<md-button class="actionButton"  ng-click="showConfirm($event,$index)"  style="">Remove</md-button>
 				

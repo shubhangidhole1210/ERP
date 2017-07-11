@@ -23,7 +23,7 @@
 				<th>ACTION</th>
 			</tr>
 			<tr class="erp-table-row"
-				ng-repeat="users in data | startFrom:currentPage*pageSize | limitTo:pageSize |  filter:{ firstName: searchText } ">
+				ng-repeat="users in data |  filter:{ firstName: searchText } | startFrom:currentPage*pageSize | limitTo:pageSize ">
 				<td>{{(currentPage*pageSize) + ($index+1) }}</td>
 				<td>{{users.firstName}}</td>
 				<td>{{users.lastName}}</td>

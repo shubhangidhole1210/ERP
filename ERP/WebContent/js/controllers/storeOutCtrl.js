@@ -4,6 +4,7 @@ erpApp.controller('storeOutCtrl',function($scope, $http, $mdDialog, $mdToast,
 	$scope.addProductRmAssociationMsg = false;
 	$scope.currentDate = utils.getCurrentDate();
 	$scope.isProduct = false;
+	$scope.isProductReadOnly = false;
 	$scope.isSelectedItemStoreOut = false;
 	$scope.productionPlan = {};
 	$scope.selectedRawMaterialList = [];
@@ -28,7 +29,13 @@ erpApp.controller('storeOutCtrl',function($scope, $http, $mdDialog, $mdToast,
 	};
 	
 	$scope.isProductOrderPresent = function(){
-		$scope.isProduct = $scope.productionPlans.length ===0?true : false;
+		if($scope.productionPlans.length ===0){
+			$scope.isProduct = true ;
+			$scope.isProductReadOnly = true;
+		}else{
+			$scope.isProduct = false;
+			$scope.isProductReadOnly = false;
+		}
 	}
 	
 	$scope.getProductRMAssociation = function(){

@@ -85,7 +85,7 @@ erpApp.controller('userTypePageAssoCtrl', function($scope,$http, $mdDialog,SERVE
 		$scope.userTypePageAsso={};
 		var abc = {
 			controller : DialogVendorController,
-			templateUrl : 'views/userPageTypeAssoInfo.html',
+			templateUrl : 'views/userTypePageAssociationDialogue.html',
 			parent : angular.element(document.body),
 			targetEvent : ev,
 			clickOutsideToClose : false,
@@ -268,7 +268,7 @@ erpApp.controller('userTypePageAssoCtrl', function($scope,$http, $mdDialog,SERVE
 		  $scope.information="EDIT USER TYPE PAGE ASSOCIATION"
 		    $mdDialog.show({
 		      controller: DialogVendorController,
-		      templateUrl: 'views/userPageTypeAssoInfo.html',
+		      templateUrl: 'views/userTypePageAssociationDialogue.html',
 		      parent: angular.element(document.body),
 		      targetEvent: ev,
 		      clickOutsideToClose:false,
@@ -314,7 +314,7 @@ erpApp.controller('userTypePageAssoCtrl', function($scope,$http, $mdDialog,SERVE
 			console.log($scope.user);
 			$mdDialog.show({
 						controller : DialogVendorController,
-						templateUrl : 'views/userPageTypeAssoInfo.html',
+						templateUrl : 'views/userTypePageAssociationDialogue.html',
 						parent : angular.element(document.body),
 						targetEvent : ev,
 						clickOutsideToClose : false,

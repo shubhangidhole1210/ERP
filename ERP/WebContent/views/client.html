@@ -16,7 +16,7 @@
 				<th>CONTACT NUMBER</th>
 				<th>ACTION</th>
 			</tr>
-			<tr ng-repeat=" clients in data  | startFrom:currentPage*pageSize | limitTo:pageSize |  filter:{ companyname: searchText }" >
+			<tr ng-repeat=" clients in data |  filter:{ companyname: searchText } | startFrom:currentPage*pageSize | limitTo:pageSize " >
 				<td>{{(currentPage*pageSize) + ($index+1) }}</td>
 				<td>{{clients.companyname}}</td>
 				<td>{{clients.emailid}}</td>

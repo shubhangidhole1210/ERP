@@ -234,6 +234,9 @@ erpApp
 						if($scope.vendorRmList.length == 0){
 							$scope.rmOrderCreationMsg  = true;
 							$scope.isClientselct=true;
+						}else{
+							$scope.rmOrderCreationMsg  = false;
+							$scope.isClientselct=false;
 						}
 					}
 					

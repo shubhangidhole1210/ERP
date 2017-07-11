@@ -6,14 +6,12 @@
 			<div class="qualityInspection">
 				<form name="storeOutInformation" novalidate>
 					<div>
-					       <!--  <md-input-container class="md-block" flex-gt-sm>
-									<md-checkbox aria-label="Checkbox 1"> Select Required Product for store out </md-checkbox>
-									</md-input-container> -->
+					      
 						<div layout-gt-sm="row">
 							<md-input-container class="md-block" flex-gt-sm type="password">
 							<label style="color: black;">PRODUCT</label> <md-select
 								ng-model="productionPlan" name="vendorId"
-								ng-disabled="isReadOnly" ng-init=getProductionPlanForStoreOut() name="product"
+								ng-disabled="isProductReadOnly" ng-init=getProductionPlanForStoreOut() name="product"
 								 ng-change="getProductRMAssociation()" required>
 							<md-option ng-repeat="productionPlan in productionPlans"
 								ng-value="productionPlan">
@@ -81,11 +79,6 @@
 										</div>	
 									</md-input-container></td>
 									
-									<!-- <md-input-container class="md-block" flex-gt-sm>
-										<input type="number" name="dispatchQuantity{{$index}}"
-											ng-model="rawMaterial.quantityDispatched" >
-									</md-input-container></td> -->
-								
 							</tr>
 							
 						</table>

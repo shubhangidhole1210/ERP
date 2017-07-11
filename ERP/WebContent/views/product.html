@@ -17,7 +17,7 @@
 				<th>DESCRIPTION</th>
 				<th>ACTION</th>
 			</tr>
-			<tr ng-repeat="products in data | startFrom:currentPage*pageSize | limitTo:pageSize  |  filter:{ name: searchText }">
+			<tr ng-repeat="products in data |  filter:{ name: searchText }  | startFrom:currentPage*pageSize | limitTo:pageSize ">
 				<td>{{(currentPage*pageSize) + ($index+1) }}</td>
 				<td>{{products.name}}</td>
 				<td>{{products.partNumber}}</td>

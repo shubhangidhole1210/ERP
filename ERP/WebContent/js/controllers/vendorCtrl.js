@@ -94,10 +94,14 @@ erpApp.controller('vedorCtrl', function($scope,$http, $mdDialog,SERVER_URL,$root
 					auth_token : Auth.getAuthToken()
 				};
 			$http(httpparams).then(function successCallback(data) {
-				utils.hideProgressBar();
-						$rootScope.$emit("callPopulateVendorList", {});
-				console.log(data);
-				utils.showToast('Vendor Deleted Sucessfully!');
+				if (data.data.code === 0){
+					utils.showToast('We are Sorry. Something went wrong. Please try again later.!');
+				}else{
+					utils.hideProgressBar();
+					$rootScope.$emit("callPopulateVendorList", {});
+			console.log(data);
+			utils.showToast('Vendor Deleted Sucessfully!');
+				}
 			}, function errorCallback(data) {
 				console.log("Error");
 				utils.showToast('We are Sorry. Something went wrong. Please try again later.!');

@@ -43,7 +43,7 @@ erpApp.controller('userTypeCtrl',function($scope,$http, $mdDialog,SERVER_URL,$ro
 		$scope.userType = {};
 		var addNewUserTypeDialog = {
 			controller : 'userTypeDialogCtrl',
-			templateUrl : 'views/userTypeInformation.html',
+			templateUrl : 'views/userTypeDialogue.html',
 			parent : angular.element(document.body),
 			targetEvent : ev,
 			clickOutsideToClose : false,
@@ -70,7 +70,7 @@ erpApp.controller('userTypeCtrl',function($scope,$http, $mdDialog,SERVER_URL,$ro
 		$mdDialog
 				.show({
 					controller : 'userTypeDialogCtrl',
-					templateUrl : 'views/userTypeInformation.html',
+					templateUrl : 'views/userTypeDialogue.html',
 					parent : angular.element(document.body),
 					targetEvent : ev,
 					clickOutsideToClose : false,
@@ -94,7 +94,7 @@ erpApp.controller('userTypeCtrl',function($scope,$http, $mdDialog,SERVER_URL,$ro
 		console.log($scope.unit);
 		$mdDialog.show({
 					controller : 'userTypeDialogCtrl',
-					templateUrl : 'views/userTypeInformation.html',
+					templateUrl : 'views/userTypeDialogue.html',
 					parent : angular.element(document.body),
 					targetEvent : ev,
 					clickOutsideToClose : false,

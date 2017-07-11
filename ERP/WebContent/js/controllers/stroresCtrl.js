@@ -6,6 +6,7 @@
 					
 					$scope.ischeckBoxDisabled = true;
 					$scope.isRawMaterial = false;
+					$scope.isInvoicereadOnlye = false;
 					document.getElementById('invoiceNumber').focus();
 					
 					$scope.getRMOrderInvoiceInformation = function(){
@@ -31,7 +32,14 @@
 					};
 
 					$scope.rmInvoicePresent = function(){
-						$scope.isRawMaterial = $scope.invoiceList.length ===0? true:false;
+						if($scope.invoiceList.length ===0){
+							$scope.isRawMaterial = true;
+							$scope.isInvoicereadOnlye = true;
+						}else{
+							$scope.isRawMaterial = false;
+							$scope.isInvoicereadOnlye = false;
+						}
+							
 					};
 					
 					

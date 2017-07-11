@@ -21,7 +21,7 @@
 				<th>ACTUAL PRICE</th>
 				<th>ACTION</th>
 			</tr>
-			<tr ng-repeat="rmOrders in data  | startFrom:currentPage*pageSize | limitTo:pageSize  | filter:{ name: searchText }">
+			<tr ng-repeat="rmOrders in data  | filter:{ name: searchText } | startFrom:currentPage*pageSize | limitTo:pageSize ">
 				<!-- <td>{{number}}</td> -->
 				<td>{{(currentPage*pageSize) + ($index+1) }}</td>
 				<td>{{rmOrders.name}}</td>

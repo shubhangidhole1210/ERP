@@ -1,6 +1,7 @@
 erpApp.controller('downloadPDFController',function($scope, $mdDialog, $location,$rootScope,SERVER_URL,Auth,$http,utils){
 	$scope.ProductOrderMsg = true;
-	
+	$scope.productIdReadOnly = true;
+	$scope.isBomIdMsg = false;
 	$scope.getProducts = function() {
 		utils.showProgressBar();
 		        var httpparams = {};
@@ -64,12 +65,24 @@ erpApp.controller('downloadPDFController',function($scope, $mdDialog, $location,
 			console.log(response);
              utils.hideProgressBar();
              $scope.ProductOrderMsg = false;
+             $scope.productIdReadOnly = false;
+             $scope.isEmptyBomId();
 		}, function errorCallback(response) {
 			console.log("Error");
 			utils.hideProgressBar();
 		});
 		utils.showProgressBar();
 	};
+	
+	$scope.isEmptyBomId = function(){
+		if($scope.bomData.length===0){
+			$scope.isBomIdMsg = true;
+			$scope.productIdReadOnly = true;
+		}else{
+			$scope.isBomIdMsg = false;
+			$scope.productIdReadOnly = false;
+		}
+	}
 	
 	$scope.getPdf = function () {
 		var httpparams = {};

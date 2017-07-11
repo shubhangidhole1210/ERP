@@ -53,8 +53,8 @@
 			<md-input-container class="md-block" flex-gt-sm>
 			<label class="input-filed-label">PRICE PER UNIT</label> <input
 				type="number" ng-model="rawmaterial.pricePerUnit"
-				value="rmOrderAssociation.pricePerUnit"  name="pricePerUnit"
-				 ng-maxlength="6" min="1" disabled>
+				value="{{pricePerUnit}}"  name="pricePerUnit"
+				 ng-maxlength="6" min="1" disabled >
 			<!-- <div ng-messages="rmVendorAssociation.pricePerUnit.$error">
 				<div ng-message="required">Please Enter Price Per Unit</div>
 				<div ng-message="maxlength">You can enter only 6 digit</div>

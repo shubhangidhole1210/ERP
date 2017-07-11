@@ -14,7 +14,7 @@
 				<th>DESCRIPTION</th>
 				<th>ACTION</th>
 			</tr>
-			<tr ng-repeat="units in data | startFrom:currentPage*pageSize | limitTo:pageSize |  filter:{ name: searchText } " >
+			<tr ng-repeat="units in data  |  filter:{ name: searchText } | startFrom:currentPage*pageSize | limitTo:pageSize" >
 				<td>{{(currentPage*pageSize) + ($index+1) }}</td>
 				<td>{{units.name}}</td>
 				<td>{{units.description}}</td>

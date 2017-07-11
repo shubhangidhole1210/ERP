@@ -18,7 +18,7 @@
 				<th>QUANTITY AVAILABLE</th>
 				<th>ACTION</th>
 			</tr>
-			<tr ng-repeat="rmInventarys in data | startFrom:currentPage*pageSize | limitTo:pageSize |  filter:{ name: searchText } " >
+			<tr ng-repeat="rmInventarys in data |  filter: searchText | startFrom:currentPage*pageSize | limitTo:pageSize " >
 			    <td>{{(currentPage*pageSize) + ($index+1) }}</td>
 				<td>{{rmInventarys.rawmaterial.partNumber}}</td>
 				<td>{{rmInventarys.quantityAvailable}}</td>

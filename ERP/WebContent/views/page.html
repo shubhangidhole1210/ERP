@@ -19,7 +19,7 @@
 				<th>SUBMENU</th>
 				<th>ACTION</th>
 			</tr>
-			<tr ng-repeat="page in data  | startFrom:currentPage*pageSize | limitTo:pageSize | filter:{ pageName: searchText }">
+			<tr ng-repeat="page in data | filter:{ pageName: searchText } | startFrom:currentPage*pageSize | limitTo:pageSize ">
 				<td>{{(currentPage*pageSize) + ($index+1) }}</td>
 				<td>{{page.menu}}</td>
 				<td>{{page.pageName}}</td>
