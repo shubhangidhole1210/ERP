@@ -57,7 +57,8 @@ erpApp.controller('unitDialogCtrl',
 								utils.showToast();
 							}else{
 								$scope.displayProgressBar = false;
-								$scope.message = 'Unit Information saved successfully.';
+								/*$scope.message = 'Unit Information saved successfully.';*/
+								utils.showToast(data.data.message);
 								$rootScope.$emit("CallPopulateUnitList",{});
 							}
 						},

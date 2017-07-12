@@ -833,3 +833,12 @@ margin: 15px 28px;
     position: fixed;
     overflow-x: hidden;
 }
+
+.scroll-rm-list{
+    width: 97%;
+    height: 100%;
+    overflow-y: scroll;
+    max-height: 88%;
+    position: absolute;
+    overflow-x: hidden;
+}

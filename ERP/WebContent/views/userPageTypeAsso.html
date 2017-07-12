@@ -7,6 +7,7 @@
  <md-input-container class="md-block" flex-gt-sm type="password" style="margin-left:2%">
 			<input type="text"  ng-model="searchText"  name="password" placeholder="Search by Name" class="search-text">
 			</md-input-container>
+			<div class="scroll-rm-list">
        <h1 class="table-header">USER TYPE PAGE ASSOCIATION LIST</h1>   
   <table>
 			<tr>
@@ -35,6 +36,7 @@
 		type="button" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">Previous Page</md-button> <md-button
 		class="md-raised" ng-disabled="currentPage >= data.length/pageSize - 1" ng-click="currentPage=currentPage+1">Next Page</md-button>
 	</md-dialog-actions>
+	</div>
 		<div ng-show="isVendorPredent">
 		     Currently there are no active user type page.Please add new vendor.
 		</div>

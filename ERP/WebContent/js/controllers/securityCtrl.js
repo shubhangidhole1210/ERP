@@ -9,6 +9,7 @@ erpApp
 					$scope.rmMsg = true;
 					$scope.isClientselct=true;
 					$scope.rmOrderCreationMsg  = false;
+					$scope.isSaveButtonDisabled = false;
 					$scope.createDate = new Date($scope.createDate);
 
 					// TODO Setting Default for Testing Later It should be
@@ -234,9 +235,11 @@ erpApp
 						if($scope.vendorRmList.length == 0){
 							$scope.rmOrderCreationMsg  = true;
 							$scope.isClientselct=true;
+							$scope.isSaveButtonDisabled = true;
 						}else{
 							$scope.rmOrderCreationMsg  = false;
 							$scope.isClientselct=false;
+							$scope.isSaveButtonDisabled = false;
 						}
 					}
 					

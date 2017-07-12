@@ -117,9 +117,9 @@
 							<md-option ng-repeat="rawMaterialOrder in vendorRmList"
 								ng-value="rawMaterialOrder.id">
 							{{rawMaterialOrder.name}} </md-option> </md-select>
-							<div ng-messages="securityInformation.rawMaterial.$error">
+							<!-- <div ng-messages="securityInformation.rawMaterial.$error">
 								<div ng-message="required">Please select Raw Material</div>
-							</div>
+							</div> -->
 							<p ng-show="rmMsg" style="color: rgb(40,53,147)">Please select Vendor first</p>
 							<p ng-show="rmOrderCreationMsg" style="color: rgb(40,53,147)">Please Create Raw material order for selcted vendor</p>
 							</md-input-container>
@@ -170,7 +170,7 @@
 							<md-dialog-actions layout="row"> <md-button
 								class="actionButton"
 								ng-click="submitInformation(securityInformation.$valid,$event);resteData()"
-								type="submit" ng-disabled="isReadOnly" style="">SAVE</md-button> <md-button
+								type="submit" ng-disabled="isSaveButtonDisabled" style="">SAVE</md-button> <md-button
 								class="actionButton" ng-click="restInformation()" style="">CANCEL</md-button>
 							</md-dialog-actions>
 						</div>

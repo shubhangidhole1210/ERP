@@ -8,9 +8,8 @@
 		<md-input-container class="md-block" flex-gt-sm type="password">
 		<input type="text" ng-model="searchText" name="password"
 			placeholder="Search by Page Name" class="search-text"> </md-input-container>
+			<div class="scroll-rm-list">
 		<h1 class="table-header">PAGE LIST</h1>
-
-
 		<table>
 			<tr>
 				<th>NO</th>
@@ -38,6 +37,8 @@
 		type="button" ng-disabled="currentPage == 0" ng-click="gotoPrevPage()">Previous Page</md-button> <md-button
 		class="md-raised" ng-disabled="currentPage >= data.length/pageSize - 1" ng-click="gotoNextPage()">Next Page</md-button>
 	</md-dialog-actions>
+		</div>
+		
 		<div ng-show="isPagePresent">Currently there are no active
 			Page.Please add new Page.</div>
 	</div>

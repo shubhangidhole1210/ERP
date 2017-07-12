@@ -138,6 +138,10 @@ erpApp.controller('securityCheckOutCtrl', function($scope, $http, $mdDialog, $md
 				$scope.OrderCreationMsg = true;
 				$scope.isproduct = true;
 				 $scope.isSavebutton = true;
+			}else{
+				$scope.OrderCreationMsg = false;
+				$scope.isproduct = false;
+				 $scope.isSavebutton = false;
 			}
 			
 		}
